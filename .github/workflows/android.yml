@@ -32,7 +32,10 @@ jobs:
           printf '%s' "$SIGNING_STORE_B64" | base64 --decode > "$store"
           signer="$ANDROID_HOME/build-tools/35.0.0/apksigner"
           "$signer" sign --ks "$store" --ks-key-alias lichtbild --ks-pass env:SIGNING_PASSWORD --out lichtbild.apk app/build/outputs/apk/release/app-release-unsigned.apk
-          "$signer" verify --verbose lichtbild.apk
+          expected='3d29e370b08b7bcd800693a04eb65ee9b3c1ce575dce1b659298dde789221ba2'
+          certificate_info=$("$signer" verify --print-certs lichtbild.apk)
+          actual=$(awk '/^Signer #[0-9]+ certificate SHA-256 digest:/ {print $NF}' <<< "$certificate_info")
+          [[ "$actual" == "$expected" ]] || { echo "::error::Signaturzertifikat stimmt nicht mit dem erwarteten Zertifikat überein."; exit 1; }
       - uses: actions/upload-artifact@v7.0.2
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         with:
