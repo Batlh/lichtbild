@@ -20,7 +20,7 @@ jobs:
         if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
         env:
           SIGNING_STORE_B64: ${{ secrets.SIGNING_STORE_B64 }}
-          SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
+          SIGNING_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD || secrets.SIGNING_PASSWORD }}
         shell: bash
         run: |
           set -euo pipefail
