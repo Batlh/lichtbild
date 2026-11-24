@@ -1,0 +1,10 @@
+.gradle/
+.idea/
+**/build/
+local.properties
+*.apk
+*.idsig
+*.p12
+*.jks
+*.keystore
+*PRIVAT*.md
