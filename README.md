@@ -2,6 +2,10 @@
 
 Offline-Kamera für Android 10 und neuer. Anwendungspaket `io.github.batlh.lichtbild`. Für Erwachsene und Jugendliche ab zehn Jahren. Front- und Hauptkamera werden unterstützt.
 
+## Download und Changelog
+
+[Signierte APK herunterladen](https://github.com/Batlh/lichtbild/releases/latest/download/lichtbild.apk) · [GitHub Releases](https://github.com/Batlh/lichtbild/releases) · [Changelog](CHANGELOG.md)
+
 ## Aufnahme
 
 Profil wählen und die automatische Aufnahme starten. Die Kamera sucht eine einzelne Person und prüft Kopfhaltung, Augenöffnung, Mund, Gesichtsausdruck, Ausschnitt, Helligkeit und Schärfe. Nach mehreren passenden Kamerabildern verarbeitet die App genau den geprüften Frame. Beide ML-Kit-Modelle sind im APK enthalten. Die App ersetzt den Hintergrund durch Hellgrau, richtet die Augenachse aus und skaliert den geschätzten Scheitel-Kinn-Abstand auf 34 mm bei Ausgabegröße 35 × 45 mm. Haare und Kopfbedeckungen können diese Schätzung verfälschen.
