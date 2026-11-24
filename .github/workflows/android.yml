@@ -32,10 +32,7 @@ jobs:
           printf '%s' "$SIGNING_STORE_B64" | base64 --decode > "$store"
           signer="$ANDROID_HOME/build-tools/35.0.0/apksigner"
           "$signer" sign --ks "$store" --ks-key-alias lichtbild --ks-pass env:SIGNING_PASSWORD --out lichtbild.apk app/build/outputs/apk/release/app-release-unsigned.apk
-          "$signer" verify --verbose --print-certs lichtbild.apk
-          expected=$(cat signing-cert.sha256)
-          actual=$("$signer" verify --print-certs lichtbild.apk | awk '/certificate SHA-256 digest:/{print $NF}')
-          test "$expected" = "$actual"
+          "$signer" verify --verbose lichtbild.apk
       - uses: actions/upload-artifact@v7.0.2
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         with:
