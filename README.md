@@ -26,3 +26,7 @@ Das JPEG hat 700 × 900 Pixel im Verhältnis 7:9. Bei einem Ausdruck mit 35 × 4
 Projekt in Android Studio öffnen oder mit JDK 17, Android SDK 35 und Gradle 8.9 bauen: `gradle :app:assembleDebug`. Für Releases `gradle :app:assembleRelease` ausführen und die ausgerichtete APK mit Android Build Tools / apksigner und dem projektspezifischen Keystore signieren.
 
 Bei Kamerafehlern bitte Modell, Android-Version, Kameraseite, Profil und angezeigten Hinweis angeben.
+
+## Lizenz
+
+Der eigene App-Code steht unter der [Apache License 2.0](LICENSE). Für eingebundene Komponenten gelten die jeweiligen Lizenzbedingungen, darunter die [Bedingungen für Google ML Kit](https://developers.google.com/ml-kit/terms).
