@@ -2,7 +2,7 @@ plugins { id 'com.android.application' version '8.7.3' }
 android {
     namespace 'io.github.batlh.lichtbild'
     compileSdk 35
-    defaultConfig { applicationId 'io.github.batlh.lichtbild'; minSdk 29; targetSdk 34; versionCode 1; versionName '1.0' }
+    defaultConfig { applicationId 'io.github.batlh.lichtbild'; minSdk 29; targetSdk 34; versionCode 2; versionName '1.0.1' }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
 }
 dependencies {
@@ -13,3 +13,12 @@ dependencies {
     implementation 'com.google.mlkit:face-detection:16.1.7'
     implementation 'com.google.mlkit:segmentation-selfie:16.0.0-beta6'
 }
+
+def licenseAssets = layout.buildDirectory.dir('generated/licenseAssets')
+def copyLicense = tasks.register('copyAppLicense', Copy) {
+    from rootProject.file('LICENSE')
+    into licenseAssets
+    rename { 'apache-license.txt' }
+}
+android.sourceSets.main.assets.srcDir(licenseAssets)
+tasks.named('preBuild').configure { dependsOn copyLicense }

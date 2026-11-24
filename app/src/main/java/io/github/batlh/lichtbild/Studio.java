@@ -55,7 +55,28 @@ public class Studio extends ComponentActivity {
     void home(){
         stopCamera(); layout(); label("Lichtbild",34); label("Wofür brauchst du dein Foto?",20);
         for(int i=0;i<names.length;i++){ final int index=i; button(names[i],()->{profile=index;cameraPage();});}
+        button("Lizenzen und Hinweise",this::showLicenses);
         label("Die Prüfung läuft auf deinem Gerät. Erst wenn du das fertige Foto speicherst, wird eine JPEG-Datei angelegt.",16);
+    }
+    void showLicenses(){
+        String apache;
+        try (InputStream stream=getAssets().open("apache-license.txt");
+             java.util.Scanner reader=new java.util.Scanner(stream,"UTF-8")){
+            apache=reader.useDelimiter("\\A").next();
+        } catch(IOException e){
+            apache="Der Lizenztext konnte nicht geöffnet werden.";
+        }
+        String message="Lichtbild und AndroidX\nDer App-Code sowie AndroidX Activity und CameraX stehen unter der Apache License 2.0. AndroidX wird vom Android Open Source Project und seinen Mitwirkenden entwickelt.\n\n"
+            +"Google ML Kit\nGesichtserkennung und Selfie-Segmentierung stammen von Google. Für diese Komponenten gelten die ML Kit Terms of Service und die darin einbezogenen Google APIs Terms of Service.\nhttps://developers.google.com/ml-kit/terms\nhttps://developers.google.com/terms\n\n"
+            +apache;
+        TextView text=new TextView(this);
+        text.setPadding(dp(18),dp(12),dp(18),dp(12));
+        text.setText(message);
+        text.setTextIsSelectable(true);
+        ScrollView scroll=new ScrollView(this);
+        scroll.addView(text);
+        new android.app.AlertDialog.Builder(this).setTitle("Lizenzen und Hinweise")
+            .setView(scroll).setPositiveButton("Schließen",null).show();
     }
     void cameraPage(){
         stopCamera(); layout(); label(names[profile],24);

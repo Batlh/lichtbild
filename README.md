@@ -30,3 +30,5 @@ Bei Kamerafehlern bitte Modell, Android-Version, Kameraseite, Profil und angezei
 ## Lizenz
 
 Der eigene App-Code steht unter der [Apache License 2.0](LICENSE). Für eingebundene Komponenten gelten die jeweiligen Lizenzbedingungen, darunter die [Bedingungen für Google ML Kit](https://developers.google.com/ml-kit/terms).
+
+Auf der Startseite der App öffnet **Lizenzen und Hinweise** die offline lesbaren Hinweise zu AndroidX und Google ML Kit sowie den vollständigen Apache-Lizenztext.
